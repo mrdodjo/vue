@@ -8,7 +8,7 @@ const tasks = ref([
 ]);
 
 const completion = (task) => {
-  tasks.completed = !task.completed;
+  task.completed = !task.completed;
 };
 </script>
 
