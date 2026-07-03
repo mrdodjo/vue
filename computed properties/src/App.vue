@@ -7,8 +7,12 @@
         <button @click="addPerson()">Toevoegen</button>
     </div>
     <div>
-        <p v-for="(person, i) in people" :key="i">{{ person }}</p>
-        <!-- <p v-for="(child, j) in children" :key="j">{{ child }}</p>-->
+        <h3>all people: {{ totalPeople }}</h3>
+        <p v-for="(person, i) in people" :key="i">Name: {{ person.name }}, Age: {{ person.age }}</p>
+        <h3>children</h3>
+        <p v-for="(person, i) in children" :key="i">Name: {{ person.name }}, Age: {{ person.age }}</p>
+        <h3>adults</h3>
+        <p v-for="(person, i) in adults" :key="i">Name: {{ person.name }}, Age: {{ person.age }}</p>
     </div>
 </template>
 
@@ -20,8 +24,8 @@ const people = ref([
     {name: 'Piet', age: 20},
 ]);
 
-const newName = ref('');
-const newAge = ref('');
+const newName = ref(null);
+const newAge = ref(null);
 
 const addPerson = () => {
     if ((newName.value, newAge.value)) {
@@ -32,10 +36,21 @@ const addPerson = () => {
 };
 
 const children = computed(() => {
-    people.filter(isChild);
+    return people.value.filter(childCheck);
 });
 
-const isChild = () => {
-    people.age < 18;
-};
+const adults = computed(() => {
+    return people.value.filter(adultCheck);
+});
+
+const totalPeople = computed(() => {
+    return people.length;
+});
+function childCheck(person) {
+    return person.age < 18;
+}
+
+function adultCheck(person) {
+    return person.age >= 18;
+}
 </script>
