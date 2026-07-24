@@ -7,11 +7,11 @@
         <button @click="addPerson()">Toevoegen</button>
     </div>
     <div>
-        <h3>all people: {{ totalPeople }}</h3>
+        <h3>People: {{ totalPeople }}</h3>
         <p v-for="(person, i) in people" :key="i">Name: {{ person.name }}, Age: {{ person.age }}</p>
-        <h3>children</h3>
+        <h3>Children: {{ numberOfChildren }}</h3>
         <p v-for="(person, i) in children" :key="i">Name: {{ person.name }}, Age: {{ person.age }}</p>
-        <h3>adults</h3>
+        <h3>Adults: {{ numberOfAdults }}</h3>
         <p v-for="(person, i) in adults" :key="i">Name: {{ person.name }}, Age: {{ person.age }}</p>
     </div>
 </template>
@@ -44,7 +44,14 @@ const adults = computed(() => {
 });
 
 const totalPeople = computed(() => {
-    return people.length;
+    return people.value.length;
+});
+
+const numberOfChildren = computed(() => {
+    return children.value.length;
+});
+const numberOfAdults = computed(() => {
+    return adults.value.length;
 });
 function childCheck(person) {
     return person.age < 18;
