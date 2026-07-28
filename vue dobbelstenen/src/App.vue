@@ -1,29 +1,43 @@
 <script setup>
 import {ref, reactive} from 'vue';
-
-const firstName = ref('');
-const clicks = ref(0);
-const incrementClicks = () => {
-    clicks.value++;
-};
-const person = reactive({firstName: '', country: ''});
-const changeCountry = newCountry => {
-    person.country = newCountry;
-};
 </script>
 
 <template>
     <div>
-        <button @click="incrementClicks">Klik mij!</button>
-        <p>clicks: {{ clicks }}</p>
-    </div>
-    <div>
-        <h2>Hallo {{ firstName }}</h2>
-        <input v-model="firstName" placeholder="Typ je naam in" />
-    </div>
-    <div>
-        <button @click="changeCountry('Nederland')">Nederland</button>
-        <button @click="changeCountry('België')">België</button>
-        <p>country: {{ person.country }}</p>
+        <h1>Roll dice</h1>
+        <h3>Current rolls</h3>
+        <div>
+            <table>
+                <tr>
+                    <th>Number</th>
+                    <th>Amount</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>0</td>
+                </tr>
+            </table>
+        </div>
+        <button @click="rolldice">Gooi!</button>
     </div>
 </template>
