@@ -19,4 +19,11 @@
 import {ref, reactive} from 'vue';
 import tableCurrent from './tableCurrent.vue';
 import TableTotal from './tableTotal.vue';
+
+const diceArray = ref([]);
+const rolldice = () => {
+    for (let i = 0; i < 8; i++) {
+        diceArray.push(Math.floor(Math.random() * 6 + 1));
+    }
+};
 </script>
