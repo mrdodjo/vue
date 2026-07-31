@@ -7,27 +7,27 @@
             </tr>
             <tr>
                 <td>1</td>
-                <td></td>
+                <td placeholder="0"></td>
             </tr>
             <tr>
                 <td>2</td>
-                <td></td>
+                <td placeholder="0"></td>
             </tr>
             <tr>
                 <td>3</td>
-                <td></td>
+                <td placeholder="0"></td>
             </tr>
             <tr>
                 <td>4</td>
-                <td></td>
+                <td placeholder="0"></td>
             </tr>
             <tr>
                 <td>5</td>
-                <td></td>
+                <td placeholder="0"></td>
             </tr>
             <tr>
                 <td>6</td>
-                <td></td>
+                <td placeholder="0"></td>
             </tr>
         </table>
     </div>
@@ -35,6 +35,6 @@
 
 <script setup>
 defineProps({
-    dice: String,
+    dice: Array,
 });
 </script>

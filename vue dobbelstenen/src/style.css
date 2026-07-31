@@ -82,13 +82,6 @@ h2 {
 p {
   margin: 0;
 }
-.row {
-  display: flex;
-  flex-wrap: wrap;
-}
-.column {
-  flex: 0 0 50%; /* Each item takes half width */
-}
 table {
   margin-left: auto;
   margin-right: auto;
