@@ -297,3 +297,7 @@ code {
     border-right-color: var(--border);
   }
 }
+
+::placeholder {
+  --text: #9ca3af;
+}

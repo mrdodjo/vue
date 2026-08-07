@@ -2,7 +2,7 @@
     <div>
         <h1>Roll dice</h1>
         <div>
-            <diceTable :dice="count" />
+            <diceTable :count="count" />
         </div>
         <button @click="rolldice">Gooi!</button>
     </div>
@@ -14,6 +14,7 @@ import diceTable from './diceTable.vue';
 
 const diceArray = ref([]);
 const count = ref([]);
+
 const rolldice = () => {
     diceArray.value = [];
     count.value = [];
