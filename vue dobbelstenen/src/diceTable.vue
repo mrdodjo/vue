@@ -6,28 +6,21 @@
                 <th>Amount</th>
             </tr>
             <tr>
-                <td>1</td>
-                <td v-for="(amount, index) in count.slice(1, 2)" :key="index">{{ amount }}</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td v-for="(amount, index) in count.slice(2, 3)" :key="index">{{ amount }}</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td v-for="(amount, index) in count.slice(3, 4)" :key="index">{{ amount }}</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td v-for="(amount, index) in count.slice(4, 5)" :key="index">{{ amount }}</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td v-for="(amount, index) in count.slice(5, 6)" :key="index">{{ amount }}</td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td v-for="(amount, index) in count.slice(6, 7)" :key="index">{{ amount }}</td>
+                <td>
+                    <ul v-for="(number, index) in numbers" :key="index">
+                        {{
+                            number
+                        }}
+                    </ul>
+                </td>
+
+                <td>
+                    <ul v-for="(amount, index) in count.slice(1, 7)" :key="index">
+                        {{
+                            amount
+                        }}
+                    </ul>
+                </td>
             </tr>
         </table>
     </div>
@@ -36,5 +29,6 @@
 <script setup>
 const props = defineProps({
     count: Array,
+    numbers: Array,
 });
 </script>

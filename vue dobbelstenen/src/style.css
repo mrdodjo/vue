@@ -224,7 +224,7 @@ code {
   padding: 0;
   display: flex;
   gap: 8px;
-  margin: 32px 0 0;
+  margin: 5px 0 0;
 
   .logo {
     height: 18px;
@@ -252,7 +252,7 @@ code {
   }
 
   @media (max-width: 1024px) {
-    margin-top: 20px;
+    margin-top: 5px;
     flex-wrap: wrap;
     justify-content: center;
 
@@ -298,6 +298,7 @@ code {
   }
 }
 
-::placeholder {
-  --text: #9ca3af;
+ul{
+  padding: 0px;
+  margin: 2px;
 }
