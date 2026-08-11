@@ -17,14 +17,12 @@ const count = ref([]);
 
 const rolldice = () => {
     diceArray.value = [];
-    count.value = [];
+    count.value = [0, 0, 0, 0, 0, 0, 0];
     for (let i = 0; i < 8; i++) {
         diceArray.value.push(Math.floor(Math.random() * 6 + 1));
     }
     diceArray.value.forEach(diceroll => {
         count.value[diceroll] = (count.value[diceroll] || 0) + 1;
     });
-    console.log(diceArray.value);
-    console.log(count.value);
 };
 </script>
