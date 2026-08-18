@@ -99,7 +99,7 @@
             <td id="totalGeneral">0</td>
         </tr>
     </table>
-    <button @click="test"></button>
+    <button @click="test">log</button>
 </template>
 
 <script setup>
