@@ -1,7 +1,7 @@
 <template>
     <table>
         <tr>
-            <th colspan="9">SCOREBLOK</th>
+            <th colspan="3">SCOREBLOK</th>
         </tr>
         <tr>
             <th>speler:</th>
@@ -12,34 +12,28 @@
             <th>1e spel</th>
         </tr>
         <tr>
-            <td>enen</td>
-            <td>alle enen</td>
-            <td class="upperCount">0</td>
-        </tr>
-        <tr>
-            <td>tweeën</td>
-            <td>alle tweeën</td>
-            <td class="upperCount">0</td>
-        </tr>
-        <tr>
-            <td>drieën</td>
-            <td>alle drieën</td>
-            <td class="upperCount">0</td>
-        </tr>
-        <tr>
-            <td>vieren</td>
-            <td>alle vieren</td>
-            <td class="upperCount">0</td>
-        </tr>
-        <tr>
-            <td>vijven</td>
-            <td>alle vijven</td>
-            <td class="upperCount">0</td>
-        </tr>
-        <tr>
-            <td>zessen</td>
-            <td>alle zessen</td>
-            <td class="upperCount">0</td>
+            <td>
+                <ul v-for="(number, index) in numbers" :key="index">
+                    {{
+                        number
+                    }}
+                </ul>
+            </td>
+            <td>
+                <ul v-for="(pointtype, index) in pointnumbers" :key="index">
+                    {{
+                        pointtype
+                    }}
+                </ul>
+            </td>
+
+            <td>
+                <ul v-for="(eyes, index) in diceCount" :key="index">
+                    {{
+                        eyes
+                    }}
+                </ul>
+            </td>
         </tr>
         <tr>
             <td>totaal aantal punten</td>
@@ -105,9 +99,25 @@
             <td id="totalGeneral">0</td>
         </tr>
     </table>
+    <button @click="test"></button>
 </template>
 
 <script setup>
 import {ref, reactive, computed} from 'vue';
 const diceArray = defineModel();
+const diceCount = ref({1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0});
+const numbers = ref(['enen', 'tweeën', 'drieën', 'vieren', 'vijven', 'zessen']);
+const pointnumbers = ref(['alle enen', 'alle tweeën', 'alle drieën', 'alle vieren', 'alle vijven', 'alle zessen']);
+
+const diceCounter = computed(() => {
+    diceArray.value.forEach(amountThrown => {
+        diceCount.value[amountThrown] = (diceCount.value[amountThrown] || 0) + 1;
+    });
+    return diceCount.value;
+});
+
+const test = () => {
+    console.log(diceArray.value);
+    console.log(diceCount.value);
+};
 </script>
