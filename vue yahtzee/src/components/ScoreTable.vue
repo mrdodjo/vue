@@ -28,22 +28,17 @@
             </td>
 
             <td>
-                <ul v-for="(eyes, index) in diceCount" :key="index">
+                <ul v-for="(eyes, index) in diceCounter" :key="index">
                     {{
-                        eyes
+                        eyes * index
                     }}
                 </ul>
             </td>
         </tr>
         <tr>
-            <td>totaal aantal punten</td>
-            <td></td>
-            <td class="upperTotal">0</td>
-        </tr>
-        <tr>
             <td>totaal bovenste helft</td>
             <td></td>
-            <td class="upperTotal">0</td>
+            <td>{{ diceSum }}</td>
         </tr>
         <tr>
             <th>deel 2</th>
@@ -76,12 +71,13 @@
         <tr>
             <td>Yahtzee</td>
             <td>50 punten</td>
-            <td class="lowerTotal" id="yahtzee">0</td>
+            <td v-if="diceCounter.value >= 2">50</td>
+            <td v-else>0</td>
         </tr>
         <tr>
             <td>change</td>
             <td>totaal 5 stenen</td>
-            <td class="lowerTotal" id="change">0</td>
+            <td>{{ diceSum }}</td>
         </tr>
         <tr>
             <td>totaal onderste helft</td>
@@ -91,7 +87,7 @@
         <tr>
             <td>totaal bovenste helft</td>
             <td></td>
-            <td class="upperTotal">0</td>
+            <td>{{ diceSum }}</td>
         </tr>
         <tr>
             <td>totaal generaal</td>
@@ -105,19 +101,32 @@
 <script setup>
 import {ref, reactive, computed} from 'vue';
 const diceArray = defineModel();
-const diceCount = ref({1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0});
 const numbers = ref(['enen', 'tweeën', 'drieën', 'vieren', 'vijven', 'zessen']);
 const pointnumbers = ref(['alle enen', 'alle tweeën', 'alle drieën', 'alle vieren', 'alle vijven', 'alle zessen']);
 
 const diceCounter = computed(() => {
+    const diceCount = ref({1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0});
     diceArray.value.forEach(amountThrown => {
         diceCount.value[amountThrown] = (diceCount.value[amountThrown] || 0) + 1;
     });
     return diceCount.value;
 });
 
+const diceSum = computed(() => {
+    const initialValue = 0;
+    const Sum = diceArray.value.reduce((p, a) => p + a, initialValue);
+    return Sum;
+});
+
+const Yahtzee = computed(() => {
+    const yahtzeeScore = diceCounter.value.find(number => number >= 2);
+    console.log(yahtzeeScore);
+    return yahtzeeScore;
+});
+
 const test = () => {
     console.log(diceArray.value);
-    console.log(diceCount.value);
+    console.log(diceCounter.value);
+    console.log(Yahtzee.value);
 };
 </script>
