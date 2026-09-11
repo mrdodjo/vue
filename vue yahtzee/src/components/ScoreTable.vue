@@ -94,7 +94,7 @@
             <td>{{ diceSum + totalLower }}</td>
         </tr>
     </table>
-    <button @click="test">log</button>
+    <!-- <button @click="test">log</button> -->
 </template>
 
 <script setup>
@@ -113,60 +113,37 @@ const diceCounter = computed(() => {
 
 const diceSum = computed(() => diceArray.value.reduce((p, a) => p + a, 0));
 const XOfAkind = checkForX => Object.values(diceCounter.value).some(c => c >= checkForX); // True or false?
+const XIsAkind = checkIsX => Object.values(diceCounter.value).some(c => c == checkIsX);
+const checkStraight = (x, y) =>
+    Object.values(diceCounter.value)
+        .slice(x, y)
+        .every(element => element >= 1);
 
 const threeOfAKind = computed(() => (XOfAkind(3) ? diceSum.value : 0));
 const carré = computed(() => (XOfAkind(4) ? diceSum.value : 0));
 const yahtzee = computed(() => (XOfAkind(5) ? 50 : 0));
 
-const fullHouse = computed(() => (XOfAkind(3) && XOfAkind(2) ? 25 : 0));
+const fullHouse = computed(() => (XIsAkind(3) && XIsAkind(2) ? 25 : 0));
 
-const checkStraight = length => {
-    // Kijkt naar length en bepaald hoe vaak je for loop moet doen? Of splice o.i.d. toepassen?
-};
+const smallStraight = computed(() => (checkStraight(0, 4) || checkStraight(1, 5) || checkStraight(2, 6) ? 30 : 0));
+const largeStraight = computed(() => (checkStraight(0, 5) || checkStraight(1, 6) ? 40 : 0));
 
-const smallStraight = computed(() => {
-    const smallStraightScore =
-        Object.values(diceCounter.value)[2] >= 1 &&
-        Object.values(diceCounter.value)[3] >= 1 &&
-        ((Object.values(diceCounter.value)[0] >= 1 && Object.values(diceCounter.value)[1] >= 1) ||
-            (Object.values(diceCounter.value)[1] >= 1 && Object.values(diceCounter.value)[4] >= 1) ||
-            (Object.values(diceCounter.value)[4] >= 1 && Object.values(diceCounter.value)[5] >= 1));
-    if (smallStraightScore == true) {
-        return 30;
-    } else {
-        return 0;
-    }
-});
-
-const largeStraight = computed(() => {
-    const equalOrSmallerThanOne = element => {
-        return element <= 1;
-    };
-    const largeStraightScore =
-        (Object.values(diceCounter.value)[0] == 0 || Object.values(diceCounter.value)[5] == 0) &&
-        Object.values(diceCounter.value).every(equalOrSmallerThanOne);
-    if (largeStraightScore == true) {
-        return 40;
-    } else {
-        return 0;
-    }
-});
-
-const totalLower = computed(() => {
-    const totalLowerScore =
+const totalLower = computed(
+    () =>
         threeOfAKind.value +
         carré.value +
         yahtzee.value +
         fullHouse.value +
         largeStraight.value +
         smallStraight.value +
-        diceSum.value;
-    return totalLowerScore;
-});
+        diceSum.value,
+);
 
 const test = () => {
     console.log(diceCounter.value);
-    console.log(XOfAkind(4));
+    console.log(checkStraight(0, 4));
+    console.log(checkStraight(1, 5));
+    console.log(checkStraight(2, 6));
     console.log(Object.values(diceCounter.value));
 };
 </script>
