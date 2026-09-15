@@ -294,3 +294,33 @@ code {
     border-right-color: var(--border);
   }
 }
+table {
+  border: 1px #9ca3af;
+  margin-left: auto;
+  margin-right: auto;
+}
+.centerdiv{
+    display: flex;
+    justify-content: center;
+    align-items:center ;
+}
+.horizontal{
+    display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+th, tr{
+  text-align: left;
+padding-left: 5px;
+padding-right: 5px;
+}
+ul{
+  padding: 0px;
+  margin: 2px;
+  text-align: left;
+}
+.input{
+  field-sizing: content;
+  min-width: 100px;
+}
