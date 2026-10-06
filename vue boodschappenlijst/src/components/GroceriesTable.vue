@@ -1,5 +1,4 @@
 <template>
-    <h1>boodschappenlijst</h1>
     <div>
         <table>
             <thead>
