@@ -7,4 +7,3 @@ export const routes = [
     {path: '/edit', component: Edit},
     {path: '/overview', component: Overview},
 ];
-export default routes;
