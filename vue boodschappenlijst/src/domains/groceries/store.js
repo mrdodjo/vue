@@ -12,3 +12,4 @@ const groceries = ref([
 export const getAllGroceries = computed(() => groceries.value);
 
 //actions
+export const addGrocery = grocery => groceries.value.push(grocery);
