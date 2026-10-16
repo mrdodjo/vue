@@ -1,38 +1,46 @@
 <template>
+    <h2>List</h2>
     <div>
         <table>
             <thead>
-                <th>Product</th>
-                <th>Prijs</th>
-                <th>Hoeveelheid</th>
-                <th>Subtotaal</th>
+                <tr>
+                    <th>Product</th>
+                    <th>Prijs</th>
+                    <th>Hoeveelheid</th>
+                    <th>Subtotaal</th>
+                </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>
-                        <ul v-for="grocery in groceries">
+                        <ul v-for="product in getAllGroceries">
                             {{
-                                grocery.grocerie
+                                product.product
                             }}
                         </ul>
                     </td>
                     <td>
-                        <ul v-for="price in groceries">
+                        <ul v-for="price in getAllGroceries">
                             {{
                                 price.price
                             }}
                         </ul>
                     </td>
                     <td>
-                        <ul v-for="p in groceries">
+                        <ul v-for="p in getAllGroceries">
                             <input v-model.number="p.amount" type="number" class="input" min="0" />
                         </ul>
                     </td>
                     <td>
-                        <ul v-for="grocery in groceries">
+                        <ul v-for="product in getAllGroceries">
                             {{
-                                (grocerie.price * grocerie.amount).toFixed(2)
+                                (product.price * product.amount).toFixed(2)
                             }}
+                        </ul>
+                    </td>
+                    <td>
+                        <ul v-for="(link, index) in getAllGroceries" :key="index">
+                            <routerLink to="{path: '/edit'}">edit</routerLink>
                         </ul>
                     </td>
                 </tr>
@@ -50,7 +58,6 @@
                 </tr>
             </tbody>
         </table>
-        <!-- <p>{{ products }}</p> -->
     </div>
     <div><button @click="log">log</button></div>
 </template>
@@ -62,16 +69,13 @@ import {getAllGroceries} from '../domains/groceries/store';
 const totalcalc = ref([]);
 
 const total = computed(() => {
-    for (let i = 0; i < groceries.value.length; i++) {
-        totalcalc.value.splice(i, 1, products.value[i].price * products.value[i].amount);
+    for (let i = 0; i < getAllGroceries.value.length; i++) {
+        totalcalc.value.splice(i, 1, getAllGroceries.value[i].price * getAllGroceries.value[i].amount);
     }
     return totalcalc.value.reduce((p, a) => p + a, 0);
 });
 
 const log = () => {
-    console.log(totalcalc.value);
-    //console.log(totalcalc);
-    //console.log(products.value.length);
-    console.log(total.value);
+    console.log(getAllGroceries.value);
 };
 </script>

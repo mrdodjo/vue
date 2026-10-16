@@ -3,10 +3,12 @@
     <div>
         <table>
             <thead>
-                <th>Product</th>
-                <th>Prijs</th>
-                <th>Hoeveelheid</th>
-                <th>Subtotaal</th>
+                <tr>
+                    <th>Product</th>
+                    <th>Prijs</th>
+                    <th>Hoeveelheid</th>
+                    <th>Subtotaal</th>
+                </tr>
             </thead>
             <tbody>
                 <tr>
@@ -26,7 +28,9 @@
                     </td>
                     <td>
                         <ul v-for="p in getAllGroceries">
-                            <input v-model.number="p.amount" type="number" class="input" min="0" />
+                            {{
+                                p.amount
+                            }}
                         </ul>
                     </td>
                     <td>
@@ -53,7 +57,6 @@
         </table>
         <!-- <p>{{ products }}</p> -->
     </div>
-    <div><button @click="log">log</button></div>
 </template>
 
 <script setup>
