@@ -1,7 +1,6 @@
 <template>
     <h2>Create</h2>
     <GroceryForm :grocery="grocery" @submit="data => addGrocery(data)" />
-    <button @click="log">log</button>
 </template>
 
 <script setup>

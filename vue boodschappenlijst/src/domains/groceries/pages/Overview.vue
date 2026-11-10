@@ -11,32 +11,32 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr v-for="item in getAllGroceries">
                     <td>
-                        <ul v-for="product in getAllGroceries">
+                        <ul>
                             {{
-                                product.product
+                                item.product
                             }}
                         </ul>
                     </td>
                     <td>
-                        <ul v-for="price in getAllGroceries">
+                        <ul>
                             {{
-                                price.price
+                                item.price
                             }}
                         </ul>
                     </td>
                     <td>
-                        <ul v-for="p in getAllGroceries">
+                        <ul>
                             {{
-                                p.amount
+                                item.amount
                             }}
                         </ul>
                     </td>
                     <td>
-                        <ul v-for="product in getAllGroceries">
+                        <ul>
                             {{
-                                (product.price * product.amount).toFixed(2)
+                                (item.price * item.amount).toFixed(2)
                             }}
                         </ul>
                     </td>

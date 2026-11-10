@@ -11,36 +11,36 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr v-for="(item, index) in getAllGroceries">
                     <td>
-                        <ul v-for="product in getAllGroceries">
+                        <ul>
                             {{
-                                product.product
+                                item.product
                             }}
                         </ul>
                     </td>
                     <td>
-                        <ul v-for="price in getAllGroceries">
+                        <ul>
                             {{
-                                price.price
+                                item.price
                             }}
                         </ul>
                     </td>
                     <td>
-                        <ul v-for="p in getAllGroceries">
-                            <input v-model.number="p.amount" type="number" class="input" min="0" />
+                        <ul>
+                            <input v-model.number="item.amount" type="number" class="input" min="0" />
                         </ul>
                     </td>
                     <td>
-                        <ul v-for="product in getAllGroceries">
+                        <ul>
                             {{
-                                (product.price * product.amount).toFixed(2)
+                                (item.price * item.amount).toFixed(2)
                             }}
                         </ul>
                     </td>
                     <td>
-                        <ul v-for="(link, index) in getAllGroceries" :key="index">
-                            <routerLink to="{path: '/edit'}">edit</routerLink>
+                        <ul>
+                            <routerLink :to="{name: 'groceries.edit', params: {index}}">edit</routerLink>
                         </ul>
                     </td>
                 </tr>
@@ -59,7 +59,6 @@
             </tbody>
         </table>
     </div>
-    <div><button @click="log">log</button></div>
 </template>
 
 <script setup>
@@ -74,8 +73,4 @@ const total = computed(() => {
     }
     return totalcalc.value.reduce((p, a) => p + a, 0);
 });
-
-const log = () => {
-    console.log(getAllGroceries.value);
-};
 </script>
