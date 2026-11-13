@@ -1,5 +1,4 @@
 <template>
-    <h2>List</h2>
     <div>
         <table>
             <thead>
@@ -13,35 +12,19 @@
             <tbody>
                 <tr v-for="(item, index) in getAllGroceries">
                     <td>
-                        <ul>
-                            {{
-                                item.product
-                            }}
-                        </ul>
+                        {{ item.product }}
                     </td>
                     <td>
-                        <ul>
-                            {{
-                                item.price
-                            }}
-                        </ul>
+                        {{ item.price }}
                     </td>
                     <td>
-                        <ul>
-                            <input v-model.number="item.amount" type="number" class="input" min="0" />
-                        </ul>
+                        {{ item.amount }}
                     </td>
                     <td>
-                        <ul>
-                            {{
-                                (item.price * item.amount).toFixed(2)
-                            }}
-                        </ul>
+                        {{ (item.price * item.amount).toFixed(2) }}
                     </td>
                     <td>
-                        <ul>
-                            <routerLink :to="{name: 'groceries.edit', params: {index}}">edit</routerLink>
-                        </ul>
+                        <routerLink :to="{name: 'groceries.edit', params: {id: item.id}}">edit</routerLink>
                     </td>
                 </tr>
                 <tr>
@@ -49,11 +32,7 @@
                     <td></td>
                     <td></td>
                     <td>
-                        <ul>
-                            {{
-                                total.toFixed(2)
-                            }}
-                        </ul>
+                        {{ total.toFixed(2) }}
                     </td>
                 </tr>
             </tbody>
@@ -63,7 +42,7 @@
 
 <script setup>
 import {ref, reactive, computed} from 'vue';
-import {getAllGroceries} from '../domains/groceries/store';
+import {getAllGroceries} from '../store';
 
 const totalcalc = ref([]);
 

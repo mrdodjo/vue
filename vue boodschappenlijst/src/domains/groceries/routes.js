@@ -3,7 +3,7 @@ import Edit from './pages/Edit.vue';
 import Overview from './pages/Overview.vue';
 
 export const routes = [
-    {path: '/create', component: Create},
-    {path: '/edit/:index', component: Edit, name: 'groceries.edit'},
-    {path: '/overview', component: Overview},
+    {path: '/create', component: Create, name: 'groceries.create'},
+    {path: '/edit/:id', component: Edit, name: 'groceries.edit'},
+    {path: '/overview', component: Overview, name: 'groceries.overview'},
 ];

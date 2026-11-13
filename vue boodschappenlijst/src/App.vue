@@ -6,10 +6,7 @@
     </nav>
     <main>
         <RouterView />
-        <GroceriesTable></GroceriesTable>
     </main>
 </template>
 
-<script setup>
-import GroceriesTable from './components/GroceriesTable.vue';
-</script>
+<script setup></script>

@@ -8,5 +8,5 @@ import {ref} from 'vue';
 import GroceryForm from '../components/GroceryForm.vue';
 import {addGrocery} from '../store.js';
 
-const grocery = {product: '', price: 0, amount: 0};
+const grocery = {product: '', price: 0, amount: 0, id: 'x'};
 </script>

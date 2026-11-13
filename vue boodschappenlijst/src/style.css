@@ -310,7 +310,7 @@ table {
   gap: 16px;
 }
 
-th, tr{
+th, tr, td{
   text-align: left;
 padding-left: 5px;
 padding-right: 5px;
